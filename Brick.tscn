@@ -8,7 +8,7 @@ size = Vector2(96, 24)
 [sub_resource type="QuadMesh" id="QuadMesh_3w0he"]
 size = Vector2(96, 24)
 
-[node name="Brick" type="StaticBody2D" groups=["bounceable", "destroyable"]]
+[node name="Brick" type="StaticBody2D" groups=["bounceable", "destroyable", "static_bounceable"]]
 script = ExtResource("1_4mr61")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

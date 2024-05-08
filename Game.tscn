@@ -30,7 +30,7 @@ position = Vector2(576, 552)
 position = Vector2(420, 373)
 speed = 400.0
 
-[node name="BounceableBoundaries" type="StaticBody2D" parent="." groups=["bounceable"]]
+[node name="BounceableBoundaries" type="StaticBody2D" parent="." groups=["bounceable", "static_bounceable"]]
 
 [node name="Top" type="CollisionShape2D" parent="BounceableBoundaries"]
 position = Vector2(576, -10)

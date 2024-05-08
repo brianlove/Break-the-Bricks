@@ -8,7 +8,7 @@ size = Vector2(160, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iv73e"]
 size = Vector2(160, 10)
 
-[node name="Paddle" type="CharacterBody2D" groups=["bounceable"]]
+[node name="Paddle" type="CharacterBody2D" groups=["bounceable", "dynamic_bounceable"]]
 script = ExtResource("1_ui17a")
 width = 160
 
