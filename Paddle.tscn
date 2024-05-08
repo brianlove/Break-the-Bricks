@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0ow4678gi0oj"]
+
+[ext_resource type="Script" path="res://Paddle.gd" id="1_ui17a"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_to2k6"]
+size = Vector2(160, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iv73e"]
+size = Vector2(160, 10)
+
+[node name="Paddle" type="CharacterBody2D" groups=["bounceable"]]
+script = ExtResource("1_ui17a")
+width = 160
+
+[node name="PaddleBox" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_to2k6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iv73e")

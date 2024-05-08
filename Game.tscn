@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://xkne821yl0cm"]
+
+[ext_resource type="PackedScene" uid="uid://bxxbcpifaqast" path="res://Brick.tscn" id="1_3ar6t"]
+[ext_resource type="PackedScene" uid="uid://d0ow4678gi0oj" path="res://Paddle.tscn" id="1_bscn7"]
+[ext_resource type="Script" path="res://Game.gd" id="1_u5ieo"]
+[ext_resource type="PackedScene" uid="uid://dsmr4741syvqb" path="res://Projectile.tscn" id="3_1nrhx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vldnm"]
+size = Vector2(1192, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckqff"]
+size = Vector2(20, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ii8hu"]
+size = Vector2(1192, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frqul"]
+size = Vector2(20, 40)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_u5ieo")
+brick_scene = ExtResource("1_3ar6t")
+
+[node name="BrickContainer" type="Node2D" parent="."]
+
+[node name="Paddle" parent="." instance=ExtResource("1_bscn7")]
+position = Vector2(576, 552)
+
+[node name="Projectile" parent="." instance=ExtResource("3_1nrhx")]
+position = Vector2(420, 373)
+speed = 400.0
+
+[node name="BounceableBoundaries" type="StaticBody2D" parent="." groups=["bounceable"]]
+
+[node name="Top" type="CollisionShape2D" parent="BounceableBoundaries"]
+position = Vector2(576, -10)
+shape = SubResource("RectangleShape2D_vldnm")
+
+[node name="Left" type="CollisionShape2D" parent="BounceableBoundaries"]
+position = Vector2(-10, 324)
+shape = SubResource("RectangleShape2D_ckqff")
+
+[node name="Right" type="CollisionShape2D" parent="BounceableBoundaries"]
+position = Vector2(1162, 324)
+shape = SubResource("RectangleShape2D_ckqff")
+
+[node name="LossArea" type="StaticBody2D" parent="." groups=["loss_zone"]]
+
+[node name="Bottom" type="CollisionShape2D" parent="LossArea"]
+position = Vector2(576, 678)
+shape = SubResource("RectangleShape2D_ii8hu")
+debug_color = Color(0.498039, 0.247059, 0.247059, 0.419608)
+
+[node name="BottomLeft" type="CollisionShape2D" parent="LossArea"]
+position = Vector2(-10, 668)
+shape = SubResource("RectangleShape2D_frqul")
+debug_color = Color(0.498039, 0.247059, 0.247059, 0.419608)
+
+[node name="BottomRight" type="CollisionShape2D" parent="LossArea"]
+position = Vector2(1162, 668)
+shape = SubResource("RectangleShape2D_frqul")
+debug_color = Color(0.498039, 0.247059, 0.247059, 0.419608)
