@@ -22,4 +22,3 @@ func _process(delta: float) -> void:
 	elif Input.is_action_pressed("move_right"):
 		position.x += speed * delta
 	position.x = clamp(position.x, half_width, win.x - half_width)
-	#print(position)

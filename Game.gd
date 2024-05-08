@@ -20,9 +20,7 @@ func generate_bricks() -> void:
 	var vert_offset = BRICK_HEIGHT / 2
 
 	for col in range(num_bricks):
-		print(col)
 		for row in range(num_rows):
-			print(row)
 			var new_brick = brick_scene.instantiate()
 			brick_container.add_child(new_brick)
 			new_brick.global_position = Vector2(
