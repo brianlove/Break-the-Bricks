@@ -27,3 +27,4 @@ func generate_bricks() -> void:
 				horiz_offset + col * brick_width,
 				vert_offset + row * BRICK_HEIGHT
 			)
+			new_brick.value = num_rows - row

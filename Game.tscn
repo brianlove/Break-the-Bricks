@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://xkne821yl0cm"]
+[gd_scene load_steps=11 format=3 uid="uid://xkne821yl0cm"]
 
 [ext_resource type="PackedScene" uid="uid://bxxbcpifaqast" path="res://Brick.tscn" id="1_3ar6t"]
 [ext_resource type="PackedScene" uid="uid://d0ow4678gi0oj" path="res://Paddle.tscn" id="1_bscn7"]
 [ext_resource type="Script" path="res://Game.gd" id="1_u5ieo"]
 [ext_resource type="PackedScene" uid="uid://dsmr4741syvqb" path="res://Projectile.tscn" id="3_1nrhx"]
+[ext_resource type="Script" path="res://Scoreboard.gd" id="5_8aqk7"]
+[ext_resource type="PackedScene" uid="uid://b23iivu8m31rg" path="res://PointNotification.tscn" id="6_v3mxi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vldnm"]
 size = Vector2(1192, 20)
@@ -60,3 +62,39 @@ debug_color = Color(0.498039, 0.247059, 0.247059, 0.419608)
 position = Vector2(1162, 668)
 shape = SubResource("RectangleShape2D_frqul")
 debug_color = Color(0.498039, 0.247059, 0.247059, 0.419608)
+
+[node name="Scoreboard" type="Control" parent="." groups=["scoreboard"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_8aqk7")
+points_notification_scene = ExtResource("6_v3mxi")
+
+[node name="ScoreTotals" type="MarginContainer" parent="Scoreboard"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ScoreLabel" type="Label" parent="Scoreboard/ScoreTotals"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Notifications" type="CanvasLayer" parent="Scoreboard"]
+
+[node name="CenterContainer" type="CenterContainer" parent="Scoreboard/Notifications"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Scoreboard/Notifications/CenterContainer"]
+layout_mode = 2
+
+[node name="PointAwards" type="VBoxContainer" parent="Scoreboard/Notifications/CenterContainer/PanelContainer"]
+layout_mode = 2
