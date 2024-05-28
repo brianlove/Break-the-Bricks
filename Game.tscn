@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://xkne821yl0cm"]
+[gd_scene load_steps=14 format=3 uid="uid://xkne821yl0cm"]
 
 [ext_resource type="PackedScene" uid="uid://bxxbcpifaqast" path="res://Brick.tscn" id="1_3ar6t"]
 [ext_resource type="PackedScene" uid="uid://d0ow4678gi0oj" path="res://Paddle.tscn" id="1_bscn7"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dsmr4741syvqb" path="res://Projectile.tscn" id="3_1nrhx"]
 [ext_resource type="Script" path="res://Scoreboard.gd" id="5_8aqk7"]
 [ext_resource type="PackedScene" uid="uid://b23iivu8m31rg" path="res://PointNotification.tscn" id="6_v3mxi"]
+[ext_resource type="Script" path="res://SoundManager.gd" id="7_c3gmv"]
+[ext_resource type="AudioStream" uid="uid://dsanwgp28w612" path="res://assets/20132__gezortenplotz__bouncing_off_glass.wav" id="8_c41ki"]
+[ext_resource type="AudioStream" uid="uid://wybabol36vae" path="res://assets/89012__shimsewn__popchuffbounce.wav" id="9_pdtfj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vldnm"]
 size = Vector2(1192, 20)
@@ -98,3 +101,12 @@ layout_mode = 2
 
 [node name="PointAwards" type="VBoxContainer" parent="Scoreboard/Notifications/CenterContainer/PanelContainer"]
 layout_mode = 2
+
+[node name="SoundManager" type="Node2D" parent="." groups=["sound_manager"]]
+script = ExtResource("7_c3gmv")
+
+[node name="BreakBrickAudio" type="AudioStreamPlayer2D" parent="SoundManager"]
+stream = ExtResource("8_c41ki")
+
+[node name="BounceAudio" type="AudioStreamPlayer2D" parent="SoundManager"]
+stream = ExtResource("9_pdtfj")

@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var speed: float = 10
 @export var initial_velocity: Vector2 = Vector2(1, 1)
 
+@onready var sound_manager = get_tree().get_first_node_in_group("sound_manager")
+
 var direction: Vector2 = Vector2(1, 1)
 
 # Called when the node enters the scene tree for the first time.
@@ -23,8 +25,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			if collider_groups.has("static_bounceable"):
 				velocity = velocity.bounce(collision.get_normal())
+				sound_manager.bounce()
 			elif collider_groups.has("dynamic_bounceable"):
 				velocity = global_position - collider.global_position
 				velocity = velocity.normalized()
+				sound_manager.bounce()
 			if collider_groups.has("destroyable"):
 				collider.hit()
